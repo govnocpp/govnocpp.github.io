@@ -4,6 +4,11 @@
 
 body {
 	background: #d0d0d0;
+	color: #333;
+}
+
+a {
+	color: #189c4c;
 }
 
 #logo {

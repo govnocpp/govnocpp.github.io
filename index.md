@@ -2,52 +2,35 @@
 layout: default
 title: Gallery of Undefined Behavior
 ---
-<h1 class="page-header">Test page</h1>
+<h1 class="page-header">Welcome!</h1>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt congue nibh, at vulputate eros fringilla nec. Aenean id nisl a eros interdum placerat sit amet vitae elit. Ut eget iaculis libero. Duis bibendum pharetra odio, non tristique lacus tincidunt ut. Suspendisse sed orci eget orci ultricies laoreet sed sed neque. Vestibulum tincidunt at turpis ac tincidunt. Etiam mi justo, hendrerit quis euismod quis, gravida rutrum tortor. Sed at mauris sapien. Nunc sit amet mi urna.
+This website is a showcase of [undefined behavior](http://en.wikipedia.org/wiki/Undefined_behavior) in the C and C++ programming languages.
 
-{% highlight css %}
-.sub-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-{% endhighlight %}
+Undefined behavior (UB) occurs when the programmer writes code for which the language is not required by the standard to behave in any sane way. What it means is that *anything can happen*. Code with undefined behavior can crash, format your hard drive, send an angry e-mail to your boss, [make demons fly out of your nose](http://catb.org/jargon/html/N/nasal-demons.html), or simply do nothing.
 
-Pellentesque placerat ullamcorper dolor in laoreet. Praesent pretium mauris id eleifend interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam imperdiet aliquet neque quis fringilla. Proin at massa aliquet justo hendrerit eleifend eu nec erat. Phasellus orci sapien, finibus vel rutrum et, faucibus vitae lacus. Nam imperdiet lorem in lacus consequat congue. Nunc justo ligula, laoreet laoreet ullamcorper ultricies, ultrices vitae diam. Vivamus nec ex at mauris dapibus interdum ac vitae magna. Curabitur bibendum diam vel libero ultricies, at tempor mi hendrerit. In lacinia erat ligula, vitae gravida lectus faucibus sit amet.
+But we here at UB.org are not interested in just any kind of undefined behavior. For example, take the most archetypal example of undefined behavior -- dereferencing a null pointer:
 
 {% highlight c %}
-#include <stdio.h>
-#include <stdlib.h>
- 
-int main() {
-	printf("%s\n", NULL);
-	return 0;
-}
-
-
-
-#include <stdio.h>
-#include <stdlib.h>
- 
-int main() {
-	const char str[] = "%s\n";
-	printf(str, NULL);
-	return 0;
-}
+int *p = NULL;
+int oops = *p;
 {% endhighlight %}
 
-Suspendisse potenti. Integer hendrerit, nunc nec ultrices tincidunt, dolor lorem scelerisque nulla, a venenatis metus nisi sed lorem. Donec pretium nulla non tortor ullamcorper, blandit vehicula magna tempor. Mauris pulvinar odio sit amet elit sollicitudin posuere. Donec consectetur magna eu tellus tempor rutrum in eget leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In fermentum lectus elit, nec iaculis arcu pharetra ac. Aenean vehicula sodales nisi non vestibulum. Vivamus viverra rutrum tortor sit amet ultrices. Sed volutpat volutpat risus, vitae commodo mi mattis vel.
+However, such code is not an *interesting* case of undefined behavior. On most modern systems, except maybe some embedded systems, it will simply crash (the reason why is a bit technical). In general, dereferencing a null pointer is obviously wrong to even a novice C/C++ programmer, and thus the code is obviously wrong. However, consider this code, the classic double increment UB:
 
-Sed vulputate rutrum lacus ut interdum. Nulla et erat convallis, finibus nibh in, tristique justo. Donec viverra magna vitae risus dapibus suscipit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum molestie lectus accumsan, efficitur massa in, cursus libero. Proin et enim nisi. In lacus dui, blandit vel euismod eu, molestie ut libero. Donec vulputate scelerisque enim. Quisque a ligula metus. Curabitur pellentesque finibus felis a commodo. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+<a class="ideone" href="http://ideone.com/3M4ev7">ideone</a>
+{% highlight c %}
+int i = 5;
+i = ++i + ++i;
+{% endhighlight %}
 
-Suspendisse interdum malesuada enim, pellentesque sodales leo cursus a. Nunc ut erat felis. Fusce mi lacus, consectetur ut eleifend a, auctor non augue. Ut enim metus, ullamcorper ac scelerisque imperdiet, pulvinar eget ante. Etiam et fringilla eros. Etiam in est ac arcu tincidunt imperdiet. Mauris id dolor nibh. Nam lacinia dui suscipit venenatis fermentum. Donec semper leo eget orci malesuada, sit amet congue dolor malesuada. In dignissim magna et hendrerit dignissim. Praesent pulvinar viverra sem. Curabitur vel malesuada massa, sagittis lacinia urna. Donec tortor enim, ultricies eget efficitur non, pretium at turpis.
+This code, on the other hand, *is* interesting. Not only do novice programmers -- and even experienced ones -- actually write this kind of code, but it isn't immediately evident what it *should* do, and it gives different results on different C and C++ implementations -- and even in programming languages where this behavior is defined, the results are often not what one would expect. It is, in fact, [the first example](/examples/double-increment/) on this very site!
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt congue nibh, at vulputate eros fringilla nec. Aenean id nisl a eros interdum placerat sit amet vitae elit. Ut eget iaculis libero. Duis bibendum pharetra odio, non tristique lacus tincidunt ut. Suspendisse sed orci eget orci ultricies laoreet sed sed neque. Vestibulum tincidunt at turpis ac tincidunt. Etiam mi justo, hendrerit quis euismod quis, gravida rutrum tortor. Sed at mauris sapien. Nunc sit amet mi urna.
+In general, the definition of an "interesting" snippet of UB code can be fuzzy. Here are some pointer questions to help you decide:
 
-Pellentesque placerat ullamcorper dolor in laoreet. Praesent pretium mauris id eleifend interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam imperdiet aliquet neque quis fringilla. Proin at massa aliquet justo hendrerit eleifend eu nec erat. Phasellus orci sapien, finibus vel rutrum et, faucibus vitae lacus. Nam imperdiet lorem in lacus consequat congue. Nunc justo ligula, laoreet laoreet ullamcorper ultricies, ultrices vitae diam. Vivamus nec ex at mauris dapibus interdum ac vitae magna. Curabitur bibendum diam vel libero ultricies, at tempor mi hendrerit. In lacinia erat ligula, vitae gravida lectus faucibus sit amet.
+* Is the behavior counterintuitive?
+* Does it do different things under different systems/compilers?
+* Does an equivalent construct do different things in other programming languages?
+* Has real production code in the wild been bitten by this behavior?
+* Are there valuable lessons programmers can learn from showcasing this code?
 
-Suspendisse potenti. Integer hendrerit, nunc nec ultrices tincidunt, dolor lorem scelerisque nulla, a venenatis metus nisi sed lorem. Donec pretium nulla non tortor ullamcorper, blandit vehicula magna tempor. Mauris pulvinar odio sit amet elit sollicitudin posuere. Donec consectetur magna eu tellus tempor rutrum in eget leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In fermentum lectus elit, nec iaculis arcu pharetra ac. Aenean vehicula sodales nisi non vestibulum. Vivamus viverra rutrum tortor sit amet ultrices. Sed volutpat volutpat risus, vitae commodo mi mattis vel.
-
-Sed vulputate rutrum lacus ut interdum. Nulla et erat convallis, finibus nibh in, tristique justo. Donec viverra magna vitae risus dapibus suscipit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum molestie lectus accumsan, efficitur massa in, cursus libero. Proin et enim nisi. In lacus dui, blandit vel euismod eu, molestie ut libero. Donec vulputate scelerisque enim. Quisque a ligula metus. Curabitur pellentesque finibus felis a commodo. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-
-Suspendisse interdum malesuada enim, pellentesque sodales leo cursus a. Nunc ut erat felis. Fusce mi lacus, consectetur ut eleifend a, auctor non augue. Ut enim metus, ullamcorper ac scelerisque imperdiet, pulvinar eget ante. Etiam et fringilla eros. Etiam in est ac arcu tincidunt imperdiet. Mauris id dolor nibh. Nam lacinia dui suscipit venenatis fermentum. Donec semper leo eget orci malesuada, sit amet congue dolor malesuada. In dignissim magna et hendrerit dignissim. Praesent pulvinar viverra sem. Curabitur vel malesuada massa, sagittis lacinia urna. Donec tortor enim, ultricies eget efficitur non, pretium at turpis.
+If you answered yes to *some* of these questions, then perhaps it is time to [submit](/submit/) your UB code to this website with an explanation of why it behaves the way it does, and have it serve as a warning for future programmers to come!

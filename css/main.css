@@ -33,6 +33,11 @@ code, kbd, pre, samp {
 	border-radius: 4px;
 }
 
+#asterisk {
+	position: relative;
+	top: 5px;
+}
+
 #github-link {
 	display: none;
 }
@@ -99,5 +104,24 @@ code, kbd, pre, samp {
 .main .page-header {
 	margin-top: 0;
 	font-weight: 300;
+}
+
+#disqus_thread {
+	margin-top: 30px;
+	border-top: 1px solid #aaa;
+	padding-top: 15px;
+}
+
+/*
+	Code snippets
+*/
+
+a.ideone {
+	display: block;
+	text-align: right;
+	height: 0;
+	position: relative;
+	top: 12px;
+	right: 5px;
 }
 
