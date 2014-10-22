@@ -1,0 +1,62 @@
+@import url("/fonts/liberationmono_regular_macroman/stylesheet.css");
+@import url("/fonts/liberationmono_bold_macroman/stylesheet.css");
+
+/* Move down content because we have a fixed navbar that is 60px tall */
+body {
+	padding-top: 60px;
+}
+
+code, kbd, pre, samp {
+	font-family: "Liberation Mono", monospace;
+}
+
+/*
+	Sidebar
+*/
+
+.sidebar {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.sidebar {
+		width: 192px;
+		position: fixed;
+		top: 61px;
+		bottom: 0;
+		z-index: 1000;
+		display: block;
+		padding: 20px;
+		margin-bottom: 0;
+		overflow-x: hidden;
+		overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+	}
+}
+
+@media (min-width: 992px) {
+	.sidebar {
+		width: 242px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.sidebar {
+		width: 292px;
+	}
+}
+
+.main {
+	padding: 20px;
+}
+
+@media (min-width: 768px) {
+	.main {
+		padding-right: 40px;
+		padding-left: 40px;
+	}
+}
+
+.main .page-header {
+	margin-top: 0;
+}
+
