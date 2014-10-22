@@ -2,6 +2,30 @@
 	CSS overrides for Flatly bootstrap theme
 */
 
+body {
+	background: #d0d0d0;
+}
+
+#logo {
+	background: #375a7f;
+}
+
+#container {
+	background: white;
+}
+
+.sidebar {
+	background: #e0e0e0;
+}
+
+.sidebar a {
+	color: #106080;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+	background: #375a7f;
+}
+
 /*
 	Friendly highlight theme
 	

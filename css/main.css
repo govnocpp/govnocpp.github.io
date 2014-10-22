@@ -2,6 +2,14 @@
 @import url("/fonts/liberationmono_regular_macroman/stylesheet.css");
 @import url("/fonts/liberationmono_bold_macroman/stylesheet.css");
 
+html, body {
+	height: 100%;
+}
+
+#container {
+	min-height: 100%;
+}
+
 /* Move down content because we have a fixed navbar that is 60px tall */
 body {
 	padding-top: 60px;
@@ -9,6 +17,27 @@ body {
 
 code, kbd, pre, samp {
 	font-family: "Liberation Mono", monospace;
+}
+
+/*
+	Header
+*/
+
+#logo {
+	font-family: "Liberation Mono", monospace;
+	font-weight: bold;
+	font-size: 1.4em;
+	margin-right: 15px;
+	padding: 6px 9px 4px 6px;
+	letter-spacing: -3px;
+	border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+	#theme-switch {
+		margin-right: -15px;
+		margin-left: 15px;
+	}
 }
 
 /*
@@ -41,6 +70,10 @@ code, kbd, pre, samp {
 	}
 }
 
+/*
+	Main content
+*/
+
 .main {
 	padding: 20px;
 	text-rendering: optimizeLegibility;
@@ -48,7 +81,8 @@ code, kbd, pre, samp {
 
 @media (min-width: 768px) {
 	.main {
-		padding-left: 40px;
+		padding-left: 30px;
+		padding-right: 30px;
 	}
 }
 

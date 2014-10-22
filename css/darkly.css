@@ -4,6 +4,19 @@
 
 body {
 	color: #f0f0f0;
+	background: #1a1a1a;
+}
+
+#logo {
+	background: #2c3e50;
+}
+
+#container {
+	background: #262626;
+}
+
+.sidebar {
+	background: #202020;
 }
 
 code, pre {
@@ -14,6 +27,11 @@ code, pre {
 pre {
 	border-color: #383838;
 }
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+	background: #006c4c;
+}
+
 
 /*
 	Monokai highlight theme
