@@ -11,6 +11,7 @@ github_username: govnocpp
 
 # Build settings
 markdown: kramdown
+highlighter: pygments
 
 kramdown:
  input: GFM
