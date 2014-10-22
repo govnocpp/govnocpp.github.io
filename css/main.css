@@ -42,7 +42,9 @@ code, kbd, pre, samp {
 		margin-right: -15px;
 		margin-left: 15px;
 	}
-	
+}
+
+@media (min-width: 1440px) {
 	#github-link {
 		display: block;
 	}
