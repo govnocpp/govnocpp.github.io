@@ -1,3 +1,4 @@
+@import url("//fonts.googleapis.com/css?family=Lato:300,400,700,400italic");
 @import url("/fonts/liberationmono_regular_macroman/stylesheet.css");
 @import url("/fonts/liberationmono_bold_macroman/stylesheet.css");
 
@@ -14,10 +15,6 @@ code, kbd, pre, samp {
 	Sidebar
 */
 
-.sidebar {
-	display: none;
-}
-
 @media (min-width: 768px) {
 	.sidebar {
 		width: 192px;
@@ -25,7 +22,6 @@ code, kbd, pre, samp {
 		top: 61px;
 		bottom: 0;
 		z-index: 1000;
-		display: block;
 		padding: 20px;
 		margin-bottom: 0;
 		overflow-x: hidden;
@@ -47,16 +43,17 @@ code, kbd, pre, samp {
 
 .main {
 	padding: 20px;
+	text-rendering: optimizeLegibility;
 }
 
 @media (min-width: 768px) {
 	.main {
-		padding-right: 40px;
 		padding-left: 40px;
 	}
 }
 
 .main .page-header {
 	margin-top: 0;
+	font-weight: 300;
 }
 
